@@ -25,8 +25,8 @@ module AkamaiTools
 
     private
 
-    def prefix_files(*files)
-      files.map { |file| "#{@content_host}/#{file}" }
+    def prefix_files(files)
+      files.map { |file| "#{host}/#{file}" }
     end
 
     def body(action, files)

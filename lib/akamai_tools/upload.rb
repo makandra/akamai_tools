@@ -2,6 +2,7 @@ module AkamaiTools
   class Upload
     cattr_accessor :host, :user, :connection_options, :source_root, :destination_root
     attr_accessor :host, :user, :connection_options, :source_root, :destination_root, :sftp
+    self.connection_options = {}
 
     def self.configure
       yield self
