@@ -32,9 +32,10 @@ module AkamaiTools
     end
 
     def upload(file)
-      AkamaiTools.log :upload, file
       source      = "#{source_root}/#{file}"
       destination = "#{destination_root}/#{file}"
+      message = "Source: #{source}\nDestination: #{destination}"
+      AkamaiTools.log :upload, file
       sftp.upload!(source, destination)
     end
   end
