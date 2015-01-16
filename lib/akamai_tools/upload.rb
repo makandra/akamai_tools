@@ -35,7 +35,15 @@ module AkamaiTools
       source      = "#{source_root}/#{file}"
       destination = "#{destination_root}/#{file}"
       message = "Source: #{source}\nDestination: #{destination}"
-      AkamaiTools.log :upload, file
+      AkamaiTools.log :upload, message
+
+      folders_to_create = file.split("/").delete_if(&:blank?)
+      folders_to_create.each_with_object(AkamaiTools::Upload.destination_root.dup) do |current_folder, path|
+        path << "/#{current_folder}"
+        AkamaiTools.log :create_folder, path
+        sftp.mkdir! path
+      end
+
       sftp.upload!(source, destination)
     end
   end
