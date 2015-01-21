@@ -1,3 +1,5 @@
+require 'net/http'
+
 module AkamaiTools
   class Purge
     cattr_accessor :host, :user, :password, :api_url
