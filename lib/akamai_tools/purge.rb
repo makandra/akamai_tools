@@ -49,6 +49,9 @@ module AkamaiTools
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       response = http.request(request)
+      unless response.is_a?(Net::HTTPSuccess)
+        raise Error.new("Purge request error: \n#{response.body}")
+      end
       AkamaiTools.log :response, response.body
     end
   end

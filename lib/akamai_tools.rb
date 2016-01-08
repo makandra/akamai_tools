@@ -3,6 +3,8 @@ require "akamai_tools/purge"
 require "akamai_tools/upload"
 
 module AkamaiTools
+  class Error < StandardError; end
+
   mattr_accessor :logging
   mattr_writer :logger
   self.logging = true
